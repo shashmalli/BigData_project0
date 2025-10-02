@@ -28,7 +28,8 @@ class Journal:
     else:
       with open(self.filename, "a") as j:
         for line in lines:
-          j.write(f"\n>{line['date']}\n{line['entry']}\n")
+          entry = JournalEntry(line['entry'], line['date'])
+          j.write(f"\n>{entry.date}\n{entry.entry}\n")
 
   def read_entries(self):
     with open(self.filename, "r") as f:
